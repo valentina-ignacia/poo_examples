@@ -14,12 +14,15 @@ public class Empleado {
     /** Ingreso minimo mensual de referencia. */
     public static final int SUELDO_MINIMO = 539_000;
 
+    /** Esto sirve para dar formato al sueldo, utilizando el punto para separar los miles */
     private static final Locale CHILE = Locale.of("es", "CL");
 
+    /** Atributos */
     private final String rut;
     private String nombre;
     private int sueldoBase;
 
+    /** Constructor */
     public Empleado(String rut, String nombre, int sueldoBase) {
         if (rut == null || rut.isBlank()) {
             throw new IllegalArgumentException("El RUT es obligatorio.");
@@ -28,6 +31,9 @@ public class Empleado {
         setNombre(nombre);
         setSueldoBase(sueldoBase);
     }
+
+    /** Métodos */
+
 
     /** Sueldo del mes. Las subclases lo amplian con sus extras. */
     public int calcularSueldo() {
@@ -49,6 +55,7 @@ public class Empleado {
         return String.format(CHILE, "$%,d", monto);
     }
 
+    /** Getters n Setters */
     public String getRut() {
         return rut;
     }
