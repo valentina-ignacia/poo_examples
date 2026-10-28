@@ -24,5 +24,14 @@ public class Vendedor extends Empleado {
     public int getVentasMes() {
         return ventasMes;
     }
+
+    /* Métodos Propios */
+    public double calcularComision() {
+        return ventasMes * 0.03;
+    }
+
+    /*Métodos Heredados*/
+    @Override
+    public
 }
 
