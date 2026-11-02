@@ -1,37 +1,44 @@
 package cl.dsy1102.ejemplos.herencia;
 
-import java.util.Locale;
-
 public class Vendedor extends Empleado {
 
-    /*Atributo agregado*/
+    /* Atributo agregado */
     private int ventasMes;
 
     /* Constructor */
     public Vendedor(String rut, String nombre, int sueldoBase, int ventasMes) {
-        super(rut,nombre,sueldoBase);
+        super(rut, nombre, sueldoBase);
         setVentasMes(ventasMes);
     }
 
-    /* Getter n Setters*/
-    public void setVentasMes(int vestasMes) {
+    /* Getters y Setters */
+    public void setVentasMes(int ventasMes) {
         if (ventasMes < 0) {
-            throw new IllegalArgumentException("Las ventas del mes no puede ser negativas.");
+            throw new IllegalArgumentException(
+                    "Las ventas del mes no pueden ser negativas."
+            );
         }
-        this.ventasMes = vestasMes;
+        this.ventasMes = ventasMes;
     }
 
     public int getVentasMes() {
         return ventasMes;
     }
 
-    /* Métodos Propios */
-    public double calcularComision() {
-        return ventasMes * 0.03;
+    /* Metodos propios */
+    public int calcularComision() {
+        return (int) Math.round(ventasMes * 0.03);
     }
 
-    /*Métodos Heredados*/
+    /* Metodos heredados */
     @Override
-    public
-}
+    public int calcularSueldo() {
+        return super.calcularSueldo() + calcularComision();
+    }
 
+    @Override
+    public String obtenerDetalle() {
+        return super.obtenerDetalle()
+                + " | Comision: " + pesos(calcularComision());
+    }
+}
