@@ -26,7 +26,7 @@ public class Jefatura extends Empleado  {
 
     /*Métodos Propios*/
     public int calcularAsignacion() {
-        return (int) Math.round(getSueldoBase() + 0.15) + (10000 * personasACargo);
+        return (int) Math.round(getSueldoBase() * 0.15) + (10000 * personasACargo);
     }
 
     /*Métodos Heredados */
