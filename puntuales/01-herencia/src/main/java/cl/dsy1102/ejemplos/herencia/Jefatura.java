@@ -17,7 +17,7 @@ public class Jefatura extends Empleado  {
     }
 
     public void setPersonasACargo(int personasACargo) {
-        if (personasACargo > 1 && personasACargo < 50) {
+        if (personasACargo >= 1 && personasACargo <= 50) {
             this.personasACargo = personasACargo;
         } else {
             throw new IllegalArgumentException("La cantidad debe estar entre 1 y 50");
@@ -32,7 +32,7 @@ public class Jefatura extends Empleado  {
     /*Métodos Heredados */
     @Override
     public int calcularSueldo() {
-        return (int) Math.round(getSueldoBase());
+        return getSueldoBase() + calcularAsignacion();
     }
 
     @Override
